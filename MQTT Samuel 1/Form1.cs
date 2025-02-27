@@ -37,6 +37,7 @@ namespace MQTT_Samuel_1
         }
 
         string mensagem;
+        bool ACESSO_AMBIENTE = false;
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
 
@@ -51,6 +52,18 @@ namespace MQTT_Samuel_1
 
             SetText(e.Topic + ":" + mensagem);
 
+            if (e.Topic == "SENAI/PORTA")
+            {
+                if (mensagem=="true")
+                {
+                    ACESSO_AMBIENTE=true;
+                }
+            }
+            else
+            {
+                ACESSO_AMBIENTE=false;  
+            }
+
         }
 
 
@@ -63,6 +76,7 @@ namespace MQTT_Samuel_1
 
         private void btnConectar_Click_1(object sender, EventArgs e)
         {
+            btnEnviar.Enabled = true;
             try
             {
                 cliente = new MqttClient("broker.hivemq.com", 1883, false, MqttSslProtocols.None, null, null);
@@ -77,6 +91,10 @@ namespace MQTT_Samuel_1
                 cliente.Subscribe(new string[] { "SENAI/TOPICO_TESTE" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
+                // Subscribe messages
+                cliente.Subscribe(new string[] { "SENAI/PORTA" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+
                 MessageBox.Show("Conectado com sucesso!", "SENAI", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -88,12 +106,36 @@ namespace MQTT_Samuel_1
         
         private void btnEnviar_Click_1(object sender, EventArgs e)
         {
-            cliente.Publish("SENAI/TESTE", ASCIIEncoding.UTF8.GetBytes(btnEnviar.Text));
+            cliente.Publish("SENAI/TESTE", ASCIIEncoding.UTF8.GetBytes(txtEnviar.Text));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             cliente.Disconnect();
+        }
+
+        private void txtEnviar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Timer_Varredura_Tick(object sender, EventArgs e)
+        {
+            if(ACESSO_AMBIENTE==true)
+            {
+                pbPorta.BackColor = Color.Green;
+                lblPorta.Text = "PORTA ABERTA";
+            }
+            else
+            {
+                pbPorta.BackColor = Color.Red;
+                lblPorta.Text = "PORTA TRANCADA";
+            }
         }
     }
     }
