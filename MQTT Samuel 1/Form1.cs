@@ -57,7 +57,11 @@ namespace MQTT_Samuel_1
         MqttClient cliente = null;
      
 
-        private void btnConectar_Click(object sender, EventArgs e)
+    
+
+  
+
+        private void btnConectar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -80,19 +84,18 @@ namespace MQTT_Samuel_1
             {
                 MessageBox.Show(ex.Message, "SENAI", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+        }
+        
+        private void btnEnviar_Click_1(object sender, EventArgs e)
+        {
+            cliente.Publish("SENAI/TESTE", ASCIIEncoding.UTF8.GetBytes(btnEnviar.Text));
         }
 
-        private void FormClose(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             cliente.Disconnect();
         }
-
-        private void btnEnviar_Click(object sender, EventArgs e)
-        {
-            cliente.Publish("SENAI/TESTE", ASCIIEncoding.UTF8.GetBytes(txtenviar.Text));
-        }
     }
-}
+    }
 
     
