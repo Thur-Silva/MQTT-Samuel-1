@@ -107,17 +107,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("MS Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(84, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(353, 33);
+            this.label2.Size = new System.Drawing.Size(359, 37);
             this.label2.TabIndex = 7;
             this.label2.Text = "CONTROLE DE ACESSO";
             // 
             // pbPorta
             // 
             this.pbPorta.BackColor = System.Drawing.Color.IndianRed;
-            this.pbPorta.Location = new System.Drawing.Point(90, 96);
+            this.pbPorta.Location = new System.Drawing.Point(153, 122);
             this.pbPorta.Name = "pbPorta";
             this.pbPorta.Size = new System.Drawing.Size(60, 46);
             this.pbPorta.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             this.lblPorta.AutoSize = true;
             this.lblPorta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPorta.Location = new System.Drawing.Point(156, 108);
+            this.lblPorta.Location = new System.Drawing.Point(219, 134);
             this.lblPorta.Name = "lblPorta";
             this.lblPorta.Size = new System.Drawing.Size(155, 20);
             this.lblPorta.TabIndex = 9;
@@ -142,7 +142,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.GhostWhite;
+            this.ClientSize = new System.Drawing.Size(514, 450);
             this.Controls.Add(this.lblPorta);
             this.Controls.Add(this.pbPorta);
             this.Controls.Add(this.label2);
@@ -152,7 +153,7 @@
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtEnviar);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "MQTT";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPorta)).EndInit();
